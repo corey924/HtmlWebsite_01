@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mobilogics</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mobilogics-layout.css" rel="stylesheet">
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="images" href="img/favicon.ico">
+    <link rel="image_src" type="image/png" href="img/logo_fb.png" />
+
+    <style>
+        .nav-pills>li.active>a {
+            color:#fff;
+            background-color:#188BA0;
+        }
+        .nav-pills>li.active>a:hover {
+            color:#fff;
+            background-color:#188BA0;
+        }
+    </style>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var cases = getUrlParam('cases');
+            if (cases != null) {
+                $('#cases-main').load('cases/' + cases + '.html');
+                $('#' + cases).attr('class', 'active');
+            } else {
+                $('#cases-main').load('cases/tkec.html');
+                $('#tkec').attr('class', 'active');
+            }
+
+            $('.list-group a').click(function () {
+                var url = $(this).attr('href');
+                $('#cases-main').load(url);
+                return false;
+            });
+            $('.list-group a').click(function () {
+                var url = $(this).attr('href');
+                $('#cases-main').load(url);
+                return false;
+            });
+
+            $.ajaxSetup({
+                cache: false
+            });
+        });
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-57149088-1', 'auto');
+        ga('require', 'displayfeatures');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="default.aspx"><img src="img/logo.png" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="background-color:#E15A49"><a href="solutions.html">RETAIL<br />SOLUTION</a></li>
+                    <li style="background-color:#52C1AC"><a href="services.html"><br />SERVICE</a></li>
+                    <li style="background-color:#F99F3E"><a href="product.html"><br />PRODUCT</a></li>
+                    <li style="background-color:#188BA0"><a href="cases.html"><br />CASE STUDY</a></li>
+                    <li style="background-color:#0EA9E2"><a href="about.html"><br />ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Case Study</h1>
+                <ol class="breadcrumb">
+                    <li><a href="default.aspx">Home</a></li>
+                    <li class="active">Case Study</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="tkec"><a href="cases.html?cases=tkec" class="list-group-item">Tsann Kuen - Kuai 3（燦坤快3）</a></li>
+                    <li id="hungtec"><a href="cases.html?cases=hungtec" class="list-group-item">Hungtec (志登科技）</a></li>
+                    <li id="kktix"><a href="cases.html?cases=kktix" class="list-group-item">KKTIX</a></li>
+                    <li id="virus"><a href="cases.html?cases=virus" class="list-group-item">Virus Music</a></li>
+                    <li id="chanchao"><a href="cases.html?cases=chanchao" class="list-group-item">CHAN CHAO（展昭國際）</a></li>
+                    <li id="cht"><a href="cases.html?cases=cht" class="list-group-item">Chunghwa POS（中華電信）</a></li>
+                    <li id="storehub"><a href="cases.html?cases=storehub" class="list-group-item">StoreHub</a></li>
+                    <li id="ichef"><a href="cases.html?cases=ichef" class="list-group-item">iCHEF</a></li>
+                    <li id="weibyapps"><a href="cases.html?cases=weibyapps" class="list-group-item">WeibyApps</a></li>
+                </ul>
+            </div>
+
+            <div id="cases-main" class="col-md-9 jumbotron" style="margin-top:2%"></div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row" style="text-align:center">
+                <div class="col-md-12">Mobilogics International Co, Ltd.(C) Copyright 2014 Mobilogics All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

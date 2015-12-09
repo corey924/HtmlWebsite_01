@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mobilogics</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mobilogics-layout.css" rel="stylesheet">
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="images" href="img/favicon.ico">
+    <link rel="image_src" type="image/png" href="img/logo_fb.png" />
+
+    <style>
+        .nav-pills>li.active>a {
+            color:#fff;
+            background-color:#E15A49;
+        }
+        .nav-pills>li.active>a:hover {
+            color:#fff;
+            background-color:#E15A49;
+        }
+    </style>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var solutions = getUrlParam('solutions');
+            if (solutions != null) {
+                $('#solutions-main').load('solutions/' + solutions + '.html');
+                $('#' + solutions).attr('class', 'active');
+            } else {
+                $('#solutions-main').load('solutions/stock_replenishment.html');
+                $('#stock_replenishment').attr('class', 'active');
+            }
+
+            $('.list-group a').click(function () {
+                var url = $(this).attr('href');
+                $('#solutions-main').load(url);
+                return false;
+            });
+            $('.list-group a').click(function () {
+                var url = $(this).attr('href');
+                $('#solutions-main').load(url);
+                return false;
+            });
+
+            $.ajaxSetup({
+                cache: false
+            });
+        });
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-57149088-1', 'auto');
+        ga('require', 'displayfeatures');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="default.aspx"><img src="img/logo.png" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="background-color:#E15A49"><a href="solutions.html">RETAIL<br />SOLUTION</a></li>
+                    <li style="background-color:#52C1AC"><a href="services.html"><br />SERVICE</a></li>
+                    <li style="background-color:#F99F3E"><a href="product.html"><br />PRODUCT</a></li>
+                    <li style="background-color:#188BA0"><a href="cases.html"><br />CASE STUDY</a></li>
+                    <li style="background-color:#0EA9E2"><a href="about.html"><br />ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Retail Solution</h1>
+                <ol class="breadcrumb">
+                    <li><a href="default.aspx">Home</a></li>
+                    <li class="active">Retail Solution</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="stock_replenishment"><a href="solutions.html?solutions=stock_replenishment" class="list-group-item">Stock Replenishment</a></li>
+                    <li id="optimize_warehouse"><a href="solutions.html?solutions=optimize_warehouse" class="list-group-item">Optimize Warehouse</a></li>
+                    <li id="checkin_point"><a href="solutions.html?solutions=checkin_point" class="list-group-item">Check-in Point</a></li>
+                    <li id="instant_stocktaking"><a href="solutions.html?solutions=instant_stocktaking" class="list-group-item">Instant Stocktaking</a></li>
+                    <li id="assets_inventory"><a href="solutions.html?solutions=assets_inventory" class="list-group-item">Assets Inventory</a></li>
+                    <li id="shipping_logistics"><a href="solutions.html?solutions=shipping_logistics" class="list-group-item">Shipping Logistics</a></li>
+                    <li id="membership_identification"><a href="solutions.html?solutions=membership_identification" class="list-group-item">Membership Identification</a></li>
+                    <li id="vip_service"><a href="solutions.html?solutions=vip_service" class="list-group-item">VIP Service</a></li>
+                </ul>
+            </div>
+
+            <div id="solutions-main" class="col-md-7 jumbotron" style="margin-top:2%"></div>
+
+            <div id="app" class="col-md-2">
+                <div class="col-xs-12">
+                    <a target="_blank" href="product.html?item=ipdt5"><img class="img-responsive img-hover" src="img/solutions/items/ipdt5.png" /></a>
+                    <h4 class="text-center">iPDT5</h4>
+                </div>
+                <div class="col-xs-12">
+                    <a target="_blank" href="product.html?item=ascan"><img class="img-responsive img-hover" src="img/solutions/items/ascan.png" /></a>
+                    <h4 class="text-center" style="margin-top:-10%">aScan</h4>
+                </div>
+                <div class="col-xs-12">
+                    <a target="_blank" href="product.html?item=mlbeacon"><img class="img-responsive img-hover" src="img/solutions/items/mlbeacon.png" /></a>
+                    <h4 class="text-center" style="margin-top:-10%">MLBeacon</h4>
+                </div>
+
+                <div class="col-xs-5 img-portfolio" style="margin-top:10%;margin-top:30%">
+                    <a target="_blank" href="product.html?item=mapps"><img class="img-responsive img-hover" src="img/solutions/items/vzrestock.png" /></a>
+                </div>
+                <div class="col-xs-7" style="margin-top:10%;margin-top:30%">
+                    <a target="_blank" href="https://itunes.apple.com/us/app/vzrestock/id917101461"><img class="img-responsive img-hover" src="img/solutions/items/applestore.png" /></a>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=tw.com.mobilogics.VZRestock"><img class="img-responsive img-hover" style="margin-top:5%" src="img/solutions/items/googleplay.png" /></a>
+                </div>
+                <div class="col-xs-12"><h4 class="text-center">VZRestock</h4></div>
+                <div class="col-xs-5 img-portfolio" style="margin-top:10%">
+                    <a target="_blank" href="product.html?item=mapps"><img class="img-responsive img-hover" src="img/solutions/items/ezrestock.png" /></a>
+                </div>
+                <div class="col-xs-7" style="margin-top:10%">
+                    <a target="_blank" href="https://itunes.apple.com/tw/app/pan-bu-kuai-shou-ezrestock/id887742145"><img class="img-responsive img-hover" src="img/solutions/items/applestore.png" /></a>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=tw.com.mobilogics.EZRestock"><img class="img-responsive img-hover" style="margin-top:5%" src="img/solutions/items/googleplay.png" /></a>
+                </div>
+                <div class="col-xs-12"><h4 class="text-center">ezRestock</h4></div>
+                <div class="col-xs-5 img-portfolio" style="margin-top:10%">
+                    <a target="_blank" href="product.html?item=mapps"><img class="img-responsive img-hover" src="img/solutions/items/commandcenter.png" /></a>
+                </div>
+                <div class="col-xs-7" style="margin-top:10%">
+                    <a target="_blank" href="https://itunes.apple.com/tw/app/command-center/id408582055"><img class="img-responsive img-hover" src="img/solutions/items/applestore.png" /></a>
+                </div>
+                <div class="col-xs-12"><h4 class="text-center">Command Center</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row" style="text-align:center">
+                <div class="col-md-12">Mobilogics International Co, Ltd.(C) Copyright 2014 Mobilogics All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

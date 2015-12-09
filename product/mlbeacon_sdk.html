@@ -1,0 +1,323 @@
+﻿<style>
+    button {
+        min-width:20%
+    }
+    .well {
+        background-color:#808080;
+        color:#fff;
+    }
+    .spacing{
+        margin-top:5%;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $(".goto").click(function () {
+            var url = $(this).attr('onclick');
+            $("html,body").animate({ scrollTop: $(url).offset().top-80 }, 1000);
+            return false;
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <p class="product-name">MLBeacon SDK</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3><i class="fa fa-caret-right"></i>Beacon SDK</h3>
+        <button type="button" class="btn btn-warning goto" onclick="#absdk">Android</button>
+    </div>
+    <div class="col-md-12">
+        <h3><i class="fa fa-caret-right"></i>Beacon Maintainance</h3>
+        <button type="button"class="btn btn-warning goto" onclick="#bma" style="margin-right:5%">Android</button>
+        <button type="button" class="btn btn-warning goto" onclick="#bmi">iOS</button>
+    </div>
+</div>
+<div class="row spacing">
+    <div class="col-md-12">
+        <h1>Sample Code</h1>
+        <div class="col-md-12">
+            <h3><i class="fa fa-caret-right"></i>iOS</h3>
+            <p>The iOS sample source code which we provide is based on Apple iOS CoreLocation Framework. If you’re an member of iOS development, maybe you don’t need the Sample Code which Mobilogics provides. If you want to learn more information about Apple iOS CoreLocation Framework, please visit <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html#//apple_ref/doc/uid/TP40009497-CH9-SW7">Apple iOS Developer Library / Location and Maps Programming Guide</a>.</p>
+        </div>
+        <div class="col-md-12">
+            <h3><i class="fa fa-caret-right"></i>Android</h3>
+            <p>If you’re a Android developer, you need to use the Android Sample Code we provide to implement Beacon on Android platform.</p>
+        </div>
+    </div>
+</div>
+<div class="row spacing">
+    <div class="col-md-12">
+        <h1>IPA/APK</h1>
+        <div class="col-md-12">
+            <h3><i class="fa fa-caret-right"></i>iOS</h3>
+            <p>We don’t provide ipa, because you can simply use our iOS Beacon Sample Code to run the app.</p>
+        </div>
+        <div class="col-md-12">
+            <h3><i class="fa fa-caret-right"></i>Android</h3>
+            <p>For Android developer, Mobilogics provides you with our Sample APK. If you’re interested in it, please contact us.</p>
+        </div>
+    </div>
+</div>
+
+<div id="absdk" class="row spacing">
+    <h1>Android Beacon SDK</h1>
+    
+    <h4>The Android Tools SDK only used on Android version 4.3 and later. Before use it, you need manual add use permission on AndroidManifest.xml.</h4>
+    <pre class="product-code">
+<span></span>
+<span>&lt;?<span>xml</span> <span>version</span>=<span class="str">"1.0"</span> <span>encoding</span>=<span class="str">"utf-8"</span>?&gt;</span>
+    <span>&lt;<span>manifest</span> ... &gt;</span>
+    <span>&lt;<span>uses</span><span>-permission</span> <span>android:name</span>=<span class="str">"android.permission.BLUETOOTH"</span> /&gt;</span>
+    <span>&lt;<span>uses</span><span>-permission</span> <span>android:name</span>=<span class="str">"android.permission.BLUETOOTH_ADMIN"</span> /&gt;</span>
+    <span>&lt;<span>application</span> ... &gt;</span>
+    ...
+<span>&lt;/<span>manifest</span>&gt;</span>
+    </pre>
+
+    <h4>BeaconManager class</h4>
+    <h4>Init BeaconManager(Context):</h4>
+    <pre class="product-code">
+<span></span>
+<span>mManager = </span><span class="variable">new</span> <span>BeaconManager</span>(<span class="variable">this</span>);
+    </pre>
+
+    <h4>Register BeaconManagerHandler Listener</h4>
+    <pre class="product-code">
+<span></span>
+<span>mManager.addBeaconManagerHandler(</span><span class="variable">this</span><span>)</span>;
+    </pre>
+
+    <h4>Unregister BeaconManagerHandler Listener</h4>
+    <pre class="product-code">
+<span></span>
+<span>mManager.removeBeaconManagerHandler(</span><span class="variable">this</span><span>)</span>;
+    </pre>
+
+    <h4>BeaconManagerHandler interface include a callback function:</h4>
+    <pre class="product-code">
+<span></span>
+<span>onBluetoothScanForBeacon(</span><span class="variable">int</span><span>, beacon)</span>
+<span class="note">/* int is Beacon distance, include:</span>
+    <span class="note">Beacon.NEAR</span>
+    <span class="note">Beacon.IMMEDIATE</span>
+    <span class="note">Beacon.FAR</span>
+<span class="note">beacon is Beacon information object */</span>
+    </pre>
+    <pre class="product-code">
+<span></span>
+<span>...</span> <span class="variable">implements</span> <span>BeaconManagerHandler</span>
+    ...
+    <span class="note">@Override</span>
+    <span class="variable">public void</span> onBluetoothScanForBeacon(<span class="variable">int</span> distance, <span class="variable">Beacon</span> beacon) {
+    ...
+        <span>if</span> (beacon.isExist(<span class="variable">java.util.UUID</span><<span class="variable">your UUID</span>>)){
+            <span class="variable">Log</span>.d(TAG,<span class="product str">"Major = "</span> + beacon.getMajor());
+            <span class="variable">Log</span>.d(TAG,<span class="product str">"Minor = "</span> + beacon.getMinor());
+            <span class="variable">Log</span>.d(TAG,<span class="product str">"TxPower = "</span> + beacon.getTxPower());
+        }
+    ...
+    }
+    </pre>
+
+    <h4>START SCAN:</h4>
+    <pre class="product-code">
+<span></span>
+<span>mManager.startScan();</span>
+    </pre>
+
+    <h4>STOP SCAN:</h4>
+    <pre class="product-code">
+<span></span>
+<span>mManager.stopScan();</span>
+    </pre>
+
+    <button type="button" class="btn btn-default pull-right goto" onclick="#product-main"><i class="fa fa-paper-plane"></i> Top</button>
+</div>
+
+<div id="bma" class="row spacing">
+    <h1>Android</h1>
+    <h3>MLBeaconManager class</h3>
+
+    <h4>Init MLBeaconManager(Context):</h4>
+    <pre class="product-code">
+<span></span>
+<span>mMLBeaconManager = </span><span class="variable">new</span> <span>MLBeaconManager</span>(<span class="variable">this</span>);
+    </pre>
+
+    <h4>Register MLBeaconManagerHandler Listener</h4>
+    <pre class="product-code">
+<span></span>
+<span>mMLBeaconManager.addManagerHandler(</span><span class="variable">this</span>);
+    </pre>
+
+    <h4>Unregister MLBeaconManagerHandler Listener</h4>
+    <pre class="product-code">
+<span></span>
+<span>mMLBeaconManager.removeManagerHandler(</span><span class="variable">this</span>);
+    </pre>
+
+    <h4>MLBeaconManagerHandler had three callback functions:</h4>
+    <h4>onPoweredStateChanged(int) return Bluetooth state include:</h4>
+    <pre class="product-code">
+<span></span>
+<span>BluetoothAdapter.STATE_ON</span>;
+<span>BluetoothAdapter.STATE_OFF</span>;
+<span>BluetoothAdapter.STATE_TURNING_ON</span>;
+<span>BluetoothAdapter.STATE_TURNING_OFF</span>;
+    </pre>
+
+    <h4>onDisconnectBeacon(MLBeacon) call back when MLBeacon disconnect.</h4>
+    <h4>onDiscoverBeacon(MLBeacon) call back when discover MLBeacon.</h4>
+    <pre class="product-code">
+<span></span>
+<span>... <span class="variable">implements</span> MLBeaconManagerHandler{</span>
+    ...
+    <span class="note">@Override</span>
+    <span class="variable">public void</span> onPoweredStateChanged(<span class="variable">int</span> state) {
+    <span>...</span>
+    }
+    <span class="note">@Override</span>
+    <span class="variable">public void</span> onDisconnectBeacon(MLBeacon beacon) {
+    <span>...</span>
+    }
+    <span class="note">@Override</span>
+    <span class="variable">public void</span> onDiscoverBeacon(MLBeacon beacon) {
+    <span>...</span>
+    }
+}
+    </pre>
+
+    <h4>START SCAN:</h4>
+    <pre class="product-code">
+<span></span>
+<span>mMLBeaconManager.scanForBeacons();</span>
+    </pre>
+
+    <h4>STOP SCAN:</h4>
+    <pre class="product-code">
+<span></span>
+<span>mMLBeaconManager.stopScan();</span>
+    </pre>
+
+    <h3>MLBeacon class</h3>
+    <h4>This class means that every connected objects get Read, Write method from MLBeacon through on DiscoverBeacon callback.</h4>
+    <pre class="product-code">
+<span></span>
+<span class="note">// readBeaconBatteryWithCompletion to get the quantity </span>
+<span class="note">//              of battery electricity, callback:</span>
+<span>MLBeacon.OnReadBeaconBatteryWithCompletion(<span class="variable">int</span> level);</span>
+    </pre>
+    <pre class="product-code">
+<span></span>
+<span class="note">// readBeaconInfoWithCompletion get UUID、Major、Minor、 </span>
+<span class="note">//              RssiPower callback:</span>
+<span>MLBeacon.OnReadBeaconInfoWithCompletion(<span class="variable">boolean</span> finished, UUID uuid, 
+    <span class="variable">int</span> major, <span class="variable">int</span> minor, int rssiPower);</span>
+    </pre>
+        <pre class="product-code">
+<span></span>
+<span class="note">// writeBeaconInfoWithMajor Modifies Major、Minor、</span>
+<span class="note">//              RssiPower callback: </span>
+<span>MLBeacon.OnWriteBeaconInfoWithMajor(<span class="variable">boolean</span> finished);</span>
+    </pre>
+    <h4>if any information of uppdateSettingParameter has been modified, be sure to update this function. When Successfully implemented, the hardware will reboot and disconnection occurs at the same time.</h4>
+
+    <button type="button" class="btn btn-default pull-right goto" onclick="#product-main"><i class="fa fa-paper-plane"></i> Top</button>
+</div>
+
+<div id="bmi" class="row spacing">
+    <h1>iOS</h1>
+    <h3>How to using MLBeaconManager</h3>
+
+    <h4>Xcode Project Settings Add "CoreBluetooth Framework", "MobilogicsBeacon Framework" to Frameworks.</h4>
+    <h5>Import MobilogicsBeaconframework.h</h5>
+    <img class="img-responsive" src="img/product/beacon/mlbeacon_sdk/mlbeacon_sdk_ios_f1.png" />
+
+    <h4>Init</h4>
+    <pre class="product-code">
+<span></span>
+<span>MLBeaconManager *beaconManager = [[MLBeaconManager alloc] initWithHandler:self];</span>
+    </pre>
+
+    <h4>Implement MLBeaconManagerHandler</h4>
+    <pre class="product-code">
+<span></span>
+<span>MLBeaconManager *beaconManager = [[MLBeaconManager alloc] initWithHandler:self];</span>
+    </pre>
+    <pre class="product-code">
+<span></span>
+<span>- (void)btPoweredStateChanged:(CBCentralManagerState)state {</span>
+    <span>NSLog(@</span><span class="str">"btPoweredStateChanged %d"</span>, (<span class="variable">int</span>)
+}
+<span>- (void)didDisconnectBeacon:(NSObject<<span>MLBeacon</span>> *)beacon {</span>
+    <span>NSLog(@</span><span class="str">"didDisconnectBeacon UUID %@"</span>, [[beacon UUID] UUIDString]);
+}
+<span>- (void)didDiscoverBeacon:(NSObject<<span>MLBeacon</span>> *)beacon {</span>
+    <span>NSLog(@</span><span class="str">"didDiscoverBeacon UUID %@"</span>, [[beacon UUID] UUIDString]);
+}
+    </pre>
+
+
+    <h4>Scan/StopScan MLBeacon</h4>
+    <pre class="product-code">
+<span></span>
+<span>[beaconManager scanForBeacons];</span>
+<span>[beaconManager stopScan];</span>
+    </pre>
+    <h5>Using NSObject<<span>MLBeacon></span> to Read/Write</h5>
+
+    <h4>MLBeacon Parameter</h4>
+    <h5>MLBeaconManager callbacks "didDiscoverBeacon:" and puts all of MLBeacons in MLBeaconManager.beacons.</h5>
+    <h4>Read Infomation from MLBeacon</h4>
+<pre class="product-code">
+<span></span>
+<span>[beacon readBeaconInfoWithCompletion: 
+    ^(</span><span class="variable">BOOL</span> <span>finished, NSUUID *uuid, NSNumber*major, NSNumber *minor, NSNumber *rssiPower) {</span>
+    <span></span>
+    <span>if (finished) {</span>
+        <span>NSLog(</span><span class="str">@"%@, %@, %@, %@"</span>, 
+            <span>[uuid UUIDString], </span>
+            <span>[major stringValue],</span>
+            <span>[minor stringValue],</span>
+            <span>[rssiPower stringValue]);</span>
+    }
+}];
+    </pre>
+
+    <h4>Write Infomation to MLBeacon</h4>
+    <pre class="product-code">
+<span></span>
+<span>[beacon writeBeaconInfoWithMajor40876: minor:39085 rssiPower:62 completion:
+    ^(</span><span class="variable">BOOL</span> <span>finished) {</span>
+    <span></span>
+    <span>if (finished) {</span>
+        <span>NSLog(@</span><span class="str">"successed"</span>);
+    <span>} else {</span>
+        <span>NSLog(@</span><span class="str">"failed"</span>);
+    }
+}];
+    </pre>
+
+    <h4>Write UUID to MLBeacon</h4>
+    <pre class="product-code">
+<span></span>
+<span>NSUUID *uuid = 
+    [[NSUUID alloc] initWithUUIDString:@<span class="str">"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"</span>];</span>
+<span></span>
+<span>[beacon writeBeaconInfoWithUUID:uuid completion:</span>
+    <span>^(<span class="variable">BOOL</span> finished) {</span>
+        <span>if (finished) {</span>
+            <span>NSLog(@</span><span class="str">"successed"</span>);
+        <span>} else {</span>
+            <span>NSLog(@</span><span class="str">"failed"</span>);
+        }
+}];
+    </pre>
+
+<button type="button" class="btn btn-default pull-right goto" onclick="#product-main"><i class="fa fa-paper-plane"></i> Top</button>
+</div>

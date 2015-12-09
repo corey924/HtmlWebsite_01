@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mobilogics</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mobilogics-layout.css" rel="stylesheet">
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" type="images" href="img/favicon.ico">
+    <link rel="image_src" type="image/png" href="img/logo_fb.png" />
+
+    <style>
+        p  { font-size:1.2em; }
+        h2 { margin-top:5%; }
+    </style>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#solutions-main').load('solutions/stock_repienishment.html');
+            $('.list-group a').click(function () {
+                var url = $(this).attr('href');
+                $('#solutions-main').load(url);
+                return false;
+            });
+        });
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-57149088-1', 'auto');
+        ga('require', 'displayfeatures');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="default.aspx"><img src="img/logo.png" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="background-color:#E15A49"><a href="solutions.html">RETAIL<br />SOLUTION</a></li>
+                    <li style="background-color:#52C1AC"><a href="services.html"><br />SERVICE</a></li>
+                    <li style="background-color:#F99F3E"><a href="product.html"><br />PRODUCT</a></li>
+                    <li style="background-color:#188BA0"><a href="cases.html"><br />CASE STUDY</a></li>
+                    <li style="background-color:#0EA9E2"><a href="about.html"><br />ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Service</h1>
+                <ol class="breadcrumb">
+                    <li><a href="default.aspx">Home</a></li>
+                    <li class="active">Service</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <img class="img-responsive" src="img/services/services.jpg" />
+        </div>
+        <div class="row">
+            <h2>Beacon Total Solution</h2>
+            <p>Mobilogics' Beacon total solution meets a wide variety of markets' needs:</p>
+            <ol>
+                <li>Retail</li>
+                <li>Independent Boutique</li>
+                <li>Exhibition & Event</li>
+                <li>Financial Facility</li>
+                <li>Educational Institute</li>
+                <li>Health Care</li>
+                <li>Public Transportation System</li>
+                <li>Logistics</li>
+            </ol>
+            <p>We optimize our product line and offer software/hardware integration services so as to turn your creative idea into business reality.</p>
+            
+            <h2>Counseling</h2>
+            <p>We are an expert at Beacon technology, providing enterprises Beacon consultation services. Our team supports you to achieve your project from scratch.</p>
+            
+            <h2>Project Designing</h2>
+            <p>We help you explore new business models and more opportunities by supporting you to customize business solution.</p>
+
+            <h2>SDK</h2>
+            <p>Our Beacon and app SDKs are available for developers to follow code examples and core features quickly.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row" style="text-align:center">
+                <div class="col-md-12">Mobilogics International Co, Ltd.(C) Copyright 2014 Mobilogics All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html {
+    overflow-y: scroll;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+    /*margin-bottom: 30px;*/
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+.navbar-header {
+    line-height:70px;
+}
+
+.navbar-header img {
+    width:50%;
+}
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.product-name {
+    font-size:4em;
+    font-family:LiHei Pro,Verdana,Heiti TC;
+    font-weight:bold;
+    font-style:italic;
+}
+.product-tag {
+    margin-top:10%;
+    font-size:2em;
+    font-family:Century Gothic,Heiti TC;
+}
+
+.product-beacon-title {
+    font-size:2em;
+    font-family:LiHei Pro,Verdana,Heiti TC;
+    font-weight:bold;
+}
+
+.product-code {
+    background-color:#1B3748;
+    color:#50D9ED;
+    font-size:1.1em;
+}
+    .product-code .str {
+        color:#55CE43;
+    }
+    .product-code .variable {
+        color:#F6D35D;
+    }
+    .product-code .note {
+        color:#1E9AE0;
+    }
+
+
+.cases-tag {
+    margin-top:5%;
+    margin-bottom:5%;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+    margin: 0px;
+    background-color:#CCC;
+}
+
+
+/*index*/
+
+.row {
+    margin:2%;
+}
+#div_news {
+    background-color:#188BA0;
+    color:#FFF
+}
+#div_news a {
+    color:#FFF
+}
+
+ #message::-webkit-input-placeholder::after {
+            display:block;
+            content:"日本語のメッセージも歓迎します。\A";
+}
+
+/*Solutions*/
+
+/*Services*/
+
+#app div {
+    padding-right:1%;
+    padding-left:1%;
+}
+
+/*Product*/
+
+#app,#app img, .apps-icon img,#accessory img{
+    margin:auto;
+}
+
+.orderNow {
+    width:100%;
+    height:50px;
+    color: #fff;
+    font-size:2em;
+    background-color: #E15A49;
+}
+    .orderNow:hover {
+        color: #fff;
+        background-color: #be311f;
+    }
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+    .navbar-header {
+        width:30%;
+    }
+    .navbar-header img {
+        width:80%;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+    .navbar-header {
+        width:105%;
+        line-height:50px;
+    }
+    .navbar-header img{
+        width:35%;
+        margin:2%;
+    }
+}
